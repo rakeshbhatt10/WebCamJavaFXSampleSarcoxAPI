@@ -48,7 +48,7 @@ public class WebCamAppLauncher extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		primaryStage.setTitle("Connecting WebCam Using Sarcox API");
+		primaryStage.setTitle("Connecting WebCam Using Sarxos API");
 		root = new BorderPane();
 		topPane = new FlowPane();
 		topPane.setAlignment(Pos.CENTER);
