@@ -35,8 +35,6 @@ public class WebCamAppLauncher extends Application {
 	private FlowPane topPane;
 	private BorderPane root;
 	private String cameraListPromptText = "Choose Camera";
-	int[] webCamIndexs ;
-	String[] webCamInfo;
 	private ImageView imgWebCamCapturedImage;
 	private Webcam webCam = null;
 	private boolean stopCamera = false;
@@ -95,7 +93,7 @@ public class WebCamAppLauncher extends Application {
 	protected void setImageViewSize() {
 		
 		double height = webCamPane.getHeight();
-		double width = webCamPane.getWidth();
+		double width  = webCamPane.getWidth();
 		imgWebCamCapturedImage.setFitHeight(height);
 		imgWebCamCapturedImage.setFitWidth(width);
 		imgWebCamCapturedImage.prefHeight(height);
@@ -107,11 +105,8 @@ public class WebCamAppLauncher extends Application {
 
 	private void createTopPanel() {
 
-		int totalAttachedWebCams       = Webcam.getWebcams().size();
-		webCamIndexs 			       = new int[totalAttachedWebCams];
-		webCamInfo                     = new  String[totalAttachedWebCams];
-		int webCamCounter              = 0;
-		Label lbInfoLabel              = new Label("Select Your WebCam Camera");
+		int webCamCounter                  = 0;
+		Label lbInfoLabel                  = new Label("Select Your WebCam Camera");
 		ObservableList<WebCamInfo> options = FXCollections.observableArrayList(
 				);
 		
@@ -134,14 +129,14 @@ public class WebCamAppLauncher extends Application {
 	            if (arg2 != null) {
 	               
 	            	System.out.println("WebCam Index: " + arg2.getWebCamIndex()+": WebCam Name:"+ arg2.getWebCamName());
-	            	addWebCamPane(arg2.getWebCamIndex());
+	            	initializeWebCam(arg2.getWebCamIndex());
 	            }
 	        }
 	    });
 		topPane.getChildren().add(cameraOptions);
 	}
 
-	protected void addWebCamPane(final int webCamIndex) {
+	protected void initializeWebCam(final int webCamIndex) {
 		
 		Task<Void> webCamTask = new Task<Void>() {
 			
